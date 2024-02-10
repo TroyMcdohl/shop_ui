@@ -58,8 +58,10 @@ const page = () => {
   };
 
   const slideClickHandler = () => {
-    setSlideOne((prev) => (prev == 1 ? (prev = 0) : prev + 1));
+    setSlideOne((prev) => (prev == 2 ? (prev = 0) : prev + 1));
   };
+
+  console.log(slide);
 
   useEffect(() => {
     if (slide == 1) {
@@ -69,6 +71,10 @@ const page = () => {
     } else if (slide == 2) {
       setStyleState(
         "gap-1  flex justify-center items-center translate-x-[-160vw] transition-all duration-500 ease-linear w-[240vw] h-full"
+      );
+    } else {
+      setStyleState(
+        "gap-1  flex justify-center items-center translate-x-[-0vw] transition-all duration-500 ease-linear w-[240vw] h-full"
       );
     }
   }, [slide]);
@@ -96,7 +102,7 @@ const page = () => {
         <div className="z-10 bg-opacity-75 rounded-lg absolute top-1/4 mx-2 h-[100px] flex justify-center items-center w-8 bg-stone-500 ">
           <FontAwesomeIcon
             icon={faLArrowLeftIcon}
-            className="w-[20px] h-[20px] text-white opacity-100 "
+            className="w-[20px] h-[20px] text-white opacity-100  cursor-pointer"
             onClick={moveHandler.bind(this, "left")}
           />
         </div>
@@ -124,7 +130,7 @@ const page = () => {
         <div className="z-10 opacity-[0.5] rounded-lg absolute top-1/4 right-0 mx-2 h-[100px]  flex justify-center items-center w-8 bg-stone-500 ">
           <FontAwesomeIcon
             icon={faLArrowRightIcon}
-            className="w-[20px] h-[20px] text-white opacity-100 "
+            className="w-[20px] h-[20px] text-white opacity-100 cursor-pointer"
             onClick={moveHandler.bind(this, "right")}
           />
         </div>
@@ -248,10 +254,10 @@ const page = () => {
         </div>
       </div>
 
-      <div className="h-[200vh] sm:h-[250vh]   w-full ">
-        <div className="h-[40%] w-full ">
+      <div className="h-[200vh]  sm:h-[250vh]   w-full ">
+        <div className=" h-[40%] w-full ">
           <div className="h-[15%]  flex justify-center items-center flex-col">
-            <h3 className="text-5xl font-bold p-2">
+            <h3 className="text-5xl text-center font-bold p-2">
               <span className="text-red-500">New</span> Released
             </h3>
             <h5 className="text-2xl font-medium mb-6">
@@ -336,16 +342,16 @@ const page = () => {
         </div>
 
         {/* items_slider */}
-        <div className="h-1/2  sm:h-[60%] w-full sm:p-4 p-6   text-white ">
-          <div className="my-8 bg-slate-700 relative rounded-lg h-[37%] sm:h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
+        <div className=" h-[60%] w-full sm:p-4 p-6   text-white ">
+          <div className="my-8 bg-slate-700 relative rounded-lg h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
             <div className="z-10 opacity-[0.5] rounded-lg absolute top-[40%] right-0 mx-2 h-[100px]  flex justify-center items-center w-8 bg-stone-500 ">
               <FontAwesomeIcon
                 icon={faLArrowRightIcon}
-                className="w-[20px] h-[20px] text-white opacity-100 "
+                className="w-[20px] h-[20px] text-white opacity-100 cursor-pointer"
                 onClick={slideClickHandler}
               />
             </div>
-            <div className=" flex w-[180vw] h-full">
+            <div className=" flex w-[260vw] sm:w-[180vw] h-full">
               <div className="relative w-[60vw] sm:w-[20vw] h-full me-2 ">
                 <Image
                   alt=""
@@ -355,26 +361,26 @@ const page = () => {
                 />
               </div>
               <div
-                className={` flex gap-6 sm:gap-2  items-center transition-all duration-500 ease-linear translate-x-[-${
+                className={` flex gap-6 sm:gap-2   items-center transition-all duration-500 ease-linear translate-x-[-${
                   slideOne * 80
-                }vw] w-[120vw] h-full `}
+                }vw] w-[200vw] sm:w-[120vw] h-full `}
               >
                 <DispalyCard /> <DispalyCard /> <DispalyCard /> <DispalyCard />
                 <DispalyCard /> <DispalyCard />
               </div>
             </div>
           </div>
-          <div className="my-8 bg-slate-700 relative rounded-lg h-[37%] sm:h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
+          <div className="my-8 bg-slate-700 relative rounded-lg h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
             <div className="z-10 opacity-[0.5] rounded-lg absolute top-[40%] right-0 mx-2 h-[100px]  flex justify-center items-center w-8 bg-stone-500 ">
               <FontAwesomeIcon
                 icon={faLArrowRightIcon}
-                className="w-[20px] h-[20px] text-white opacity-100 "
+                className="w-[20px] h-[20px] text-white opacity-100 cursor-pointer"
                 onClick={() =>
-                  setSlideTwo((prev) => (prev == 1 ? (prev = 0) : prev + 1))
+                  setSlideTwo((prev) => (prev == 2 ? (prev = 0) : prev + 1))
                 }
               />
             </div>
-            <div className=" flex w-[180vw] h-full">
+            <div className=" flex w-[260vw] sm:w-[180vw] h-full">
               <div className="relative w-[60vw] sm:w-[20vw] h-full me-2 ">
                 <Image
                   alt=""
@@ -384,26 +390,26 @@ const page = () => {
                 />
               </div>
               <div
-                className={` flex gap-6 sm:gap-2  items-center transition-all duration-500 ease-linear translate-x-[-${
+                className={` flex gap-6 sm:gap-2   items-center transition-all duration-500 ease-linear translate-x-[-${
                   slideTwo * 80
-                }vw] w-[120vw] h-full `}
+                }vw] w-[200vw] sm:w-[120vw] h-full `}
               >
                 <DispalyCard /> <DispalyCard /> <DispalyCard /> <DispalyCard />
                 <DispalyCard /> <DispalyCard />
               </div>
             </div>
           </div>
-          <div className="my-8 bg-slate-700 relative rounded-lg h-[37%] sm:h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
+          <div className="my-8 bg-slate-700 relative rounded-lg h-[30%] w-full sm:w-[80%] overflow-hidden  mx-auto">
             <div className="z-10 opacity-[0.5] rounded-lg absolute top-[40%] right-0 mx-2 h-[100px]  flex justify-center items-center w-8 bg-stone-500 ">
               <FontAwesomeIcon
                 icon={faLArrowRightIcon}
-                className="w-[20px] h-[20px] text-white opacity-100 "
+                className="w-[20px] h-[20px] text-white opacity-100 cursor-pointer"
                 onClick={() =>
-                  setSlideThree((prev) => (prev == 1 ? (prev = 0) : prev + 1))
+                  setSlideThree((prev) => (prev == 2 ? (prev = 0) : prev + 1))
                 }
               />
             </div>
-            <div className=" flex w-[180vw] h-full">
+            <div className=" flex w-[260vw] sm:w-[180vw] h-full">
               <div className="relative w-[60vw] sm:w-[20vw] h-full me-2 ">
                 <Image
                   alt=""
@@ -413,9 +419,9 @@ const page = () => {
                 />
               </div>
               <div
-                className={` flex gap-6 sm:gap-2  items-center transition-all duration-500 ease-linear translate-x-[-${
+                className={` flex gap-6 sm:gap-2   items-center transition-all duration-500 ease-linear translate-x-[-${
                   slideThree * 80
-                }vw] w-[120vw] h-full `}
+                }vw] w-[200vw] sm:w-[120vw] h-full `}
               >
                 <DispalyCard /> <DispalyCard /> <DispalyCard /> <DispalyCard />
                 <DispalyCard /> <DispalyCard />
