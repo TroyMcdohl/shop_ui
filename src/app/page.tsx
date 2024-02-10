@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -30,6 +30,10 @@ const page = () => {
   const [slideThree, setSlideThree] = useState(0);
   const [move, setMove] = useState(0);
 
+  const [styleState, setStyleState] = useState(
+    "gap-1  flex justify-center items-center translate-x-[0vw] transition-all duration-500 ease-linear w-[240vw] h-full"
+  );
+
   const faLArrowLeftIcon = faArrowLeft as IconProp;
   const faLArrowRightIcon = faArrowRight as IconProp;
   const faFacebookIcon = faFacebook as IconProp;
@@ -56,6 +60,18 @@ const page = () => {
   const slideClickHandler = () => {
     setSlideOne((prev) => (prev == 1 ? (prev = 0) : prev + 1));
   };
+
+  useEffect(() => {
+    if (slide == 1) {
+      setStyleState(
+        "gap-1  flex justify-center items-center translate-x-[-80vw] transition-all duration-500 ease-linear w-[240vw] h-full"
+      );
+    } else if (slide == 2) {
+      setStyleState(
+        "gap-1  flex justify-center items-center translate-x-[-160vw] transition-all duration-500 ease-linear w-[240vw] h-full"
+      );
+    }
+  }, [slide]);
 
   const data = [
     {
@@ -258,15 +274,11 @@ const page = () => {
               <div className="z-10 opacity-[0.5] rounded-lg absolute top-[40%] right-0 mx-2 h-[100px]  flex justify-center items-center w-8 bg-stone-500 ">
                 <FontAwesomeIcon
                   icon={faLArrowRightIcon}
-                  className="w-[20px] h-[20px] text-white opacity-100 "
+                  className="w-[20px] h-[20px] text-white opacity-100 cursor-pointer"
                   onClick={clickHandler}
                 />
               </div>
-              <div
-                className={`gap-1  flex justify-center items-center translate-x-[-${
-                  slide * 80
-                }vw] transition-all duration-500 ease-linear w-[240vw] h-full`}
-              >
+              <div className={styleState}>
                 <div className="relative w-[100%] h-[90%] rounded-lg overflow-hidden">
                   <Image
                     alt=""
